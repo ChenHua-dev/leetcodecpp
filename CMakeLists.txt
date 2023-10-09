@@ -12,5 +12,7 @@ add_executable(test_lc1TwoSum ./src/test/exercise/LC1TwoSumTest.cpp)
 target_link_libraries(test_lc1TwoSum ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES} pthread)
 
 add_executable(swap ./src/main/exercise/swap.cpp)
+add_executable(hashmap ./src/main/exercise/hashmap.cpp)
 
 add_executable(lc242ValidAnagram ./src/main/exercise/LC242ValidAnagram.cpp)
+add_executable(lc49GroupAnagrams ./src/main/exercise/LC49GroupAnagrams.cpp)

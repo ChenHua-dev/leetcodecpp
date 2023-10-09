@@ -16,28 +16,37 @@ public:
         if (mapS.size() != mapT.size()) return false;
 //        cout << "After checking size" << endl;
         // for (unordered_map<char, int>::const_iterator it = mapS.begin() ; it != mapS.end() ; it++) {
-        for (auto it = mapS.begin() ; it != mapS.end() ; it++) {
-//            cout << "In loop" << endl;
-//            cout << "Hello, world" << endl;
-            cout << to_string(it ->first) + ": " + std::to_string(it->second) << endl;
-            bool hasChar = mapT.find(it->first) == mapT.end();
-//            cout << hasChar << endl;
-            int sCount = mapS[it->first];
-            int tCount = mapT[it->first];
-            if (hasChar || sCount != tCount) {
-                return false;
-            }
+//        for (auto it = mapS.begin() ; it != mapS.end() ; it++) {
+////            cout << "In loop" << endl;
+////            cout << "Hello, world" << endl;
+//            cout << to_string(it ->first) + ": " + std::to_string(it->second) << endl;
+//            bool hasChar = mapT.find(it->first) == mapT.end();
+////            cout << hasChar << endl;
+//            int sCount = mapS[it->first];
+//            int tCount = mapT[it->first];
+//            if (hasChar || sCount != tCount) {
+//                return false;
+//            }
+//        }
+//        for (auto it : mapS) {
+//            bool hasChar = mapT.find(it.first) == mapT.end();
+//            if (hasChar || mapS[it.first] != mapT[it.first]) return false;
+//        }
+        for (auto const& [key, val] : mapS) {
+            bool hasChar = mapT.find(key) == mapT.end();
+            if (hasChar || mapS[key] != mapT[key]) return false;
         }
         return true;
     }
 
     static void fillInHashMap(unordered_map<char, int> &map, const string& str) {
         for (char c : str) {
-            if (map.find(c) == map.end()) {
-                map[c] = 1;
-            } else {
-                map[c] += 1;
-            }
+            map[c]++;
+//            if (map.find(c) == map.end()) {
+//                map[c] = 1;
+//            } else {
+//                map[c] += 1;
+//            }
         }
     }
 };
