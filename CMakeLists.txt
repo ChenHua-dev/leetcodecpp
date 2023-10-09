@@ -3,4 +3,14 @@ project(leetcodecpp)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(leetcodecpp main.cpp)
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+
+
+add_executable(lc1TwoSum ./src/main/exercise/LC1TwoSum.cpp)
+add_executable(test_lc1TwoSum ./src/test/exercise/LC1TwoSumTest.cpp)
+target_link_libraries(test_lc1TwoSum ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES} pthread)
+
+add_executable(swap ./src/main/exercise/swap.cpp)
+
+add_executable(lc242ValidAnagram ./src/main/exercise/LC242ValidAnagram.cpp)
