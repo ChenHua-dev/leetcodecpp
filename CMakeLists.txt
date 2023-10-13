@@ -16,3 +16,5 @@ add_executable(hashmap ./src/main/exercise/hashmap.cpp)
 
 add_executable(lc242ValidAnagram ./src/main/exercise/LC242ValidAnagram.cpp)
 add_executable(lc49GroupAnagrams ./src/main/exercise/LC49GroupAnagrams.cpp)
+
+add_executable(validcoordinates ./src/main/exercise/validcoordinates.cpp)
