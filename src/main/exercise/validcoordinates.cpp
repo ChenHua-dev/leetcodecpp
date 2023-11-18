@@ -9,8 +9,7 @@ using namespace std;
 
 
 //function to find valid pairs
-vector<string> funcValidPairs(vector<string> inputStr){
-    vector<string> answer;
+string validCoordinates(string& inputStr){
     smatch str_match;    //declaring match datatype
 
     //regex pattern
@@ -19,29 +18,24 @@ vector<string> funcValidPairs(vector<string> inputStr){
     std::string pattern = R"(^[(])" + patternLat + R"(,\s+)" + patternLon + R"([)]$)";
     regex str_expr(pattern);
 
-    for (int i = 0; i < inputStr.size(); i++) {
-        if (regex_search(inputStr[i], str_match, str_expr))  //checking of valid regex pattern
-            answer.push_back("Valid");  //pushing result into answer vector
-        else
-            answer.push_back("Invalid");
-    }
-    return answer;
+    if (regex_search(inputStr, str_match, str_expr)) return "Valid";
+    else return "Invalid";
 }
 
 //main
 int main() {
-    string input;
-    getline(cin, input);
-    int input_strsize = std::stoi(input);
+    string inputStr;
+    getline(cin, inputStr);
+    int input_strsize = std::stoi(inputStr);
 
-    vector<string> inputStr; //inputing vector
+    vector<string> results;
     for (int i = 0; i < input_strsize; i++) {
-        std::getline(cin, input);
-        inputStr.push_back(input);
+        std::getline(cin, inputStr);
+        results.push_back(validCoordinates(inputStr));
     }
-    vector<string> result = funcValidPairs(inputStr);
-    for (int i = 0; i < input_strsize; i++) {
-        cout << result[i] << endl;
+
+    for (const auto& re : results) {
+        cout << re << endl;
     }
 
     return 0;
